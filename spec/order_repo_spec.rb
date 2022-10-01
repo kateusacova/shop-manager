@@ -11,9 +11,30 @@ RSpec.describe OrderRepository do
     reset_tables
   end
 
-  xit "Returns a list of Order objects" do
-    repo = OrderRepository.new
-    expect(repo.all.length).to eq 3
+  let(:repo) {OrderRepository.new}
 
+  it "Returns a list of Order objects" do 
+    orders = repo.all
+    expect(orders.length).to eq 3
+    expect(orders.first.id).to eq "1"
+  end
+
+  xit "Creates a new Order object linked to item" do 
+    order = Order.new
+    order.customer_name = "Sasha"
+    order.order_date = 2022-10-01
+    item_id = 1
+    repo.create(order)
+    order_id = repo.all.last.id
+    repo.link_to_item(item_id, order_id)
+    items = find_by_order(order_id).items
+    expect(items.first.id).to eq "1"
+  end
+
+  it "Returns an Order object with array of linked items" do
+    order = repo.find_by_order(1)
+    items = order.items
+    expect(order.customer_name).to eq "Kate"
+    expect(items.length).to eq 2
   end
 end

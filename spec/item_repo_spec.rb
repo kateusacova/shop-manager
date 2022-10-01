@@ -11,16 +11,15 @@ RSpec.describe ItemRepository do
     reset_tables
   end
 
+  let(:repo) {ItemRepository.new}
+
   it "Returns a list of Item objects" do
-    repo = ItemRepository.new
     items = repo.all
     expect(items.length).to eq 3
     expect(items.first.id).to eq "1"
   end
 
   it "Creates a new Item object" do
-    repo = ItemRepository.new
-
     item = Item.new
     item.name = 'LG Tumble Dryer'
     item.price = 770.00
@@ -39,14 +38,12 @@ RSpec.describe ItemRepository do
   end
 
   it "Returns an Item object of the specified id" do
-    repo = ItemRepository.new
     item = repo.find(1)
     expect(item.name).to eq 'Russell Hobbs Microwave'
     expect(item.id).to eq "1"
   end
 
   it "Updates an Item object with new values" do
-    repo = ItemRepository.new
     item = repo.find(1)
     item.quantity = 1
     repo.update(item)

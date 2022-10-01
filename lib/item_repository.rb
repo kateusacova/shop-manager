@@ -1,5 +1,6 @@
 require_relative "../lib/database_connection.rb"
 require_relative "../lib/item.rb"
+require_relative "../lib/order.rb"
 
 class ItemRepository
   def all

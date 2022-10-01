@@ -17,9 +17,9 @@ class ItemRepository
   end
 
   def update(item)
-    # For reducing Item quantity after making an order
+    # For reducing Item quantity after making an order.
     # And also for updating the updating the item q. 
-    # which is already in stock
+    # which is already in stock.
     # Updates an Item object of the specified id
   end
 end
@@ -34,12 +34,13 @@ class OrderRepository
     # Returns a list of Order objects 
     # and each list should also have a list of Item objects
   end
-
-  def create(order)
+  
+  def create(order_id)
     # For "creating new order"
-    # Creates a new Order object
+    # Creates a new Order object.
     # Should also reduce the quantity of corresponding 
-    # Item object
+    # Item object.
+    #
   end
 end
 ```
