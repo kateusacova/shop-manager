@@ -9,3 +9,5 @@ gem "rspec", "~> 3.11"
 gem "dotenv", "~> 2.8"
 
 gem "pg", "~> 1.4"
+
+gem "date", "~> 3.2"

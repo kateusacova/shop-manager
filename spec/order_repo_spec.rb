@@ -19,16 +19,16 @@ RSpec.describe OrderRepository do
     expect(orders.first.id).to eq "1"
   end
 
-  xit "Creates a new Order object linked to item" do 
+  it "Creates a new Order object linked to item" do 
     order = Order.new
-    order.customer_name = "Sasha"
-    order.order_date = 2022-10-01
-    item_id = 1
+    order.customer_name = 'Sasha'
+    order.order_date = '2022-10-01'
+    item_id = 2
     repo.create(order)
     order_id = repo.all.last.id
-    repo.link_to_item(item_id, order_id)
-    items = find_by_order(order_id).items
-    expect(items.first.id).to eq "1"
+    repo.link_to_item(order_id, item_id)
+    items = repo.find_by_order(order_id).items
+    expect(items.first.id).to eq "2"
   end
 
   it "Returns an Order object with array of linked items" do

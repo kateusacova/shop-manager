@@ -42,10 +42,16 @@ class OrderRepository
   end
 
   def create(order)
+    query = "INSERT INTO orders (customer_name, order_date) VALUES ($1, $2);"
+    params = [order.customer_name, order.order_date]
+    result = DatabaseConnection.exec_params(query, params)
   end
 
   # Links order to the item that was ordered
-  def link_to_item(item_id, order_id)
+  def link_to_item(order_id, item_id)
+    query = "INSERT INTO orders_items (order_id, item_id) VALUES ($1, $2);"
+    params = [order_id, item_id]
+    result = DatabaseConnection.exec_params(query, params)
   end
 
   private 
@@ -67,5 +73,4 @@ class OrderRepository
 
     item
   end
-
 end
